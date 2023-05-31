@@ -1,0 +1,92 @@
+ Lmsapplication;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class Telecaller extends Beforemethod{
+
+	WebElement element;
+	@BeforeMethod
+	public void login() {
+		driver=browserSetUp("chrome");
+		driver.findElement(By.xpath("//input[@inputmode='email']")).sendKeys("ram@beta.in");
+		driver.findElement(By.xpath("//input[@placeholder='Enter your password']")).sendKeys("ram@123");
+		element =  waitforElementvisibility(By.xpath("//button[@type='submit']"),10);
+		clickElement(element);
+		}
+	
+	
+	@AfterMethod
+	public void quit() {
+		
+	}
+	@Test
+	public void overflow() {
+	
+	element =  waitforElementvisibility(By.xpath("//div[@class='box box2']"),10);
+	clickElement(element);
+		
+	element =  waitforElementvisibility(By.xpath("//span[@class='leads']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//ion-item[@title='Opportunities']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='drop']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='site-visit']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='rnr']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='upload']"),10);
+	clickElement(element);
+	
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='projects']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='leads']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='report']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='track-1']"),10);
+	clickElement(element);
+	
+	element =  waitforElementvisibility(By.xpath("//span[@class='track-1']"),10);
+	clickElement(element);
+	
+	}
+	public void clickElement(WebElement element) {
+		// TODO Auto-generated method stub
+	try {
+		JavascriptExecutor executor=(JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click();",element);
+	}
+	catch(Exception e) {
+		System.out.println("Failed to click element:"+e.getMessage());
+	}
+	}
+	private WebElement waitforElementvisibility(By locator, int i) {
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
+		
+		
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+}
+
+
+
+
